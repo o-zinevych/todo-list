@@ -3,7 +3,13 @@
 {% block title %}Todo List{% endblock %}
 
 {% block content %}
-  <h1 class="pb-3">TODO list</h1>
+  <h1 class="pb-3">
+    TODO list
+    <a href="{% url 'todo:task-create' %}" class="btn btn-primary float-right">
+        Add task
+      </a>
+  </h1>
+
   {% for task in task_list %}
     <h5>
       {{ task.content }}
