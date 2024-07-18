@@ -27,6 +27,7 @@
         Tags: {% for tag in task.tags.all %}{{ tag.name }}{% endfor %}
       </span>
       <a href="{% url 'todo:task-update' task.id %}">Update</a>
+      <a href="{% url 'todo:task-delete' task.id %}">Delete</a>
     </p>
   {% endfor %}
 {%  endblock %}
