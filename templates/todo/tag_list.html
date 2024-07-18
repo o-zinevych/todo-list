@@ -22,7 +22,9 @@
       	<tr>
           <td>{{ tag.name }}</td>
           <td>
-            <a href=""></a>
+            <a href="{% url 'todo:tag-update' tag.id %}" class="btn btn-secondary">
+              Update
+            </a>
           </td>
           <td>
             <a href=""></a>
