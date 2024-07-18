@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Tag{% endblock %}
+
+{% block content %}
+  <h1>{{ object|yesno:"Update the ,Add a new " }}tag</h1>
+  {% include "includes/form.html" %}
+{% endblock %}
