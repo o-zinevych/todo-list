@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import (
     TagListView,
+    TagCreateView,
     TaskListView,
     TaskCreateView,
     TaskUpdateView,
@@ -21,5 +22,6 @@ urlpatterns = [
         TaskUpdateDoneView.as_view(),
         name="task-update-done"
     ),
-    path("tags/", TagListView.as_view(), name="tag-list")
+    path("tags/", TagListView.as_view(), name="tag-list"),
+    path("tags/create/", TagCreateView.as_view(), name="tag-create"),
 ]
