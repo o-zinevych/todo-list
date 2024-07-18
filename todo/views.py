@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from .forms import TaskForm
-from .models import Task
+from .models import Task, Tag
 
 
 class TaskListView(generic.ListView):
@@ -37,3 +37,7 @@ class TaskUpdateDoneView(generic.RedirectView):
         task.is_done = False if task.is_done else True
         task.save()
         return super().get_redirect_url()
+
+
+class TagListView(generic.ListView):
+    model = Tag
