@@ -34,7 +34,7 @@ class TaskUpdateDoneView(generic.RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         task = Task.objects.get(id=kwargs["pk"])
-        task.is_done = False if task.is_done else True
+        task.is_done = not task.is_done
         task.save()
         return super().get_redirect_url()
 
