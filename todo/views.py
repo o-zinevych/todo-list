@@ -1,5 +1,6 @@
-from django.shortcuts import get_object_or_404
-from django.urls import reverse_lazy
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from .forms import TaskForm
@@ -30,13 +31,11 @@ class TaskDeleteView(generic.DeleteView):
 
 
 class TaskUpdateDoneView(generic.RedirectView):
-    pattern_name = "todo:task-list"
-
-    def get_redirect_url(self, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         task = Task.objects.get(id=kwargs["pk"])
         task.is_done = not task.is_done
         task.save()
-        return super().get_redirect_url()
+        return HttpResponseRedirect(reverse("todo:task-list"))
 
 
 class TagListView(generic.ListView):
