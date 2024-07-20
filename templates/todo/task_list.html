@@ -15,14 +15,16 @@
       {{ task.content }}
       {% if task.is_done %}
         <span class="text-success">Done</span>
-        <a href="{% url 'todo:task-update-done' task.id %}" class="btn btn-secondary float-right">
-          Undo
-        </a>
+        <form action="{% url 'todo:task-update-done' task.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Undo" class="btn btn-secondary float-right">
+        </form>
       {% else %}
         <span class="text-danger">Not done</span>
-        <a href="{% url 'todo:task-update-done' task.id %}" class="btn btn-success float-right">
-          Complete
-        </a>
+        <form action="{% url 'todo:task-update-done' task.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Complete" class="btn btn-success float-right">
+        </form>
       {% endif %}
     </h5>
     <p>
